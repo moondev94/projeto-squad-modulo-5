@@ -1,9 +1,9 @@
 const Usuario = require('../models/Usuario.js')
-const Tarefa = require('../models/Tarefa.js')
+const Produto= require('../models/Produto.js')
 
 // Cria vários objetos e os adiciona a um array para simular uma lista de objetos
 const bdUsuarios = []
-const bdTarefas = []
+const bdProdutos = []
 
 // Cria um objeto do tipo Usuario e adiciona a lista de usuarios
 const usuario = new Usuario('Nome do usuário', 'email@email.com', 'Senha')
@@ -16,11 +16,11 @@ bdUsuarios.push(usuario2)
 
 
 // Cria um objeto do tipo Tarefa e adiciona a lista de tarefas
-const tarefa = new Tarefa('Título da tarefa', 'Descrição da tarefa', 'A fazer', new Date())
-bdTarefas.push(tarefa)
+const produto = new Produto('Nome', 'Descrição', 'Id', 'Preco')
+bdProdutos.push(produto)
 
-const tarefa2 = new Tarefa('Título da tarefa 2', 'Descrição da tarefa 2', 'A fazer', new Date())
-bdTarefas.push(tarefa2)
+const produto2 = new Produto('Nome 2', 'Descrição 2', 'Id 2', 'Preco 2')
+bdProdutos.push(produto2)
 
 // Exporta as listas de objetos
-module.exports = { bdUsuarios, bdTarefas }
+module.exports = { bdUsuarios, bdProdutos }
