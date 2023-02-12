@@ -1,26 +1,26 @@
-const Usuario = require('../models/Usuario.js')
-const Produto= require('../models/Produto.js')
+const Produto = require('../models/Produto.js')
+const Entrega = require('../models/Entrega.js')
 
 // Cria vários objetos e os adiciona a um array para simular uma lista de objetos
-const bdUsuarios = []
 const bdProdutos = []
+const bdEntregas = []
 
-// Cria um objeto do tipo Usuario e adiciona a lista de usuarios
-const usuario = new Usuario('Nome do usuário', 'email@email.com', 'Senha')
-bdUsuarios.push(usuario)
-// Cria um objeto do tipo Usuario e adiciona a lista de usuarios
-const usuario2 = new Usuario('Nome do usuário 2', 'email2@email.com', 'Senha 2')
-bdUsuarios.push(usuario2)
-
-
-
-
-// Cria um objeto do tipo Tarefa e adiciona a lista de tarefas
-const produto = new Produto('Nome', 'Descrição', 'Id', 'Preco')
+// Cria um objeto do tipo produto e adiciona a lista de produtos
+const produto = new Produto('Nome do produto', 'Marca', 'Valor:')
 bdProdutos.push(produto)
-
-const produto2 = new Produto('Nome 2', 'Descrição 2', 'Id 2', 'Preco 2')
+// Cria um objeto do tipo produto e adiciona a lista de produtos
+const produto2 = new Produto('Nome do produto 2', 'Marca', 'Valor:')
 bdProdutos.push(produto2)
 
+
+
+
+// Cria um objeto do tipo entrega e adiciona a lista de entregas
+const entrega = new Entrega('Título da entrega', 'Descrição da entrega', 'A fazer', new Date())
+bdEntregas.push(entrega)
+
+const entrega2 = new Entrega('Título da entrega 2', 'Descrição da entrega 2', 'A fazer', new Date())
+bdEntregas.push(entrega2)
+
 // Exporta as listas de objetos
-module.exports = { bdUsuarios, bdProdutos }
+module.exports = { bdProdutos, bdEntregas }

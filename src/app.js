@@ -8,10 +8,10 @@ const app = express()
 app.use(express.json())
 
 // importando os controllers
-const usuarioController = require('./controllers/usuario-controller.js')
-const produtoController = require('./controllers/produto-controller.js')
+const produtoController = require('./controllers/produtoController.js')
+const entregaController = require('./controllers/entregaController.js')
 
-usuarioController.rotas(app)
 produtoController.rotas(app)
+entregaController.rotas(app)
 
 module.exports = app
