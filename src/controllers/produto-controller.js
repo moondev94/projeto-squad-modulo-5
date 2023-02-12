@@ -22,7 +22,7 @@ class produtoController {
 
 
     static inserir(req, res){
-        const produto = new Produto(req.body.nome, req.body.email, req.body.senha)
+        const produto = new Produto(req.body.nome, req.body.descricao, req.body.id, req.body.preco)
         bdProdutos.push(produto)
         res.send(bdProdutos)
         // Console log do corpo da requisição
@@ -69,8 +69,8 @@ class produtoController {
 
         // Produto atualizado
         produto.nome = req.body.nome
-        produto.id = req.body.id
         produto.descricao = req.body.descricao
+        produto.id = req.body.id
         produto.preco = req.body.preco
 
         res.send(bdProdutos)
