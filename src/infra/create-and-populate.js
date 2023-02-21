@@ -64,26 +64,27 @@ CREATE TABLE IF NOT EXISTS "ENTREGA" (
     ID INTEGER PRIMARY KEY AUTOINCREMENT,
     "ENDERECO" varchar(64),
     "CLIENTE" varchar(64),
-    "PRODUTO"  varchar(64),
+    ID_PRODUTO INTERGE,
+    FOREIGN KEY(ID_PRODUTO) REFERENCES PRODUTO(ID),
     ID_CLIENTE INTERGE,
     FOREIGN KEY(ID_CLIENTE) REFERENCES CLIENTE(ID)
 );`;
 
-const ADD_ENTREGA_DATA = `INSERT INTO ENTREGA (ENDERECO, CLIENTE, PRODUTO, ID_CLIENTE) VALUES
-('rua Dom Helder camara n-303', 'Julian da Silva', 'blusa regata' '132.145.167-89'),
-('rua da tartaruga s/n', 'Marcia de Lopes' 'bermuda-jeans', '098.912.834-32),
-('rua nova brasil n-10', 'Dom Pedro' 'kit cueca box', '345.231.939-83)
+const ADD_ENTREGA_DATA = `INSERT INTO ENTREGA (ENDERECO, CLIENTE, ID_PRODUTO, ID_CLIENTE) VALUES
+('Avenida Rio Branco, 29', 'Julian da Silva', '1', '2'),
+('Rua da Quitanda, 12', 'Marcia Lopes', '2', '1'),
+('Rua Rainha Elizabeth, 56', 'Dom Pedro',, '3' '3')
 `
 
 function criaTabelaEntrega() {
     data_base.run(ADD_ENTREGA_DATA, (error) => {
-        if (error) console.log("Erro ao criar tabebela de entrega!");
+        if (error) console.log("Erro ao criar tabebela de entregas!");
     });
 }
 
 function populaTabelaEntrega() {
     data_base.run(ADD_ENTREGA_DATA, (error) => {
-        if (error) console.log("Erro ao popular tabela de entragas!");
+        if (error) console.log("Erro ao popular tabela de entregas!");
     });
 }
 
