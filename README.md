@@ -99,9 +99,9 @@ Utilizar o padrão MVC;<br>
 
 <h2>Pedro De Souza</h2>
 
-<p> <a href="https://github.com/themonsteer" target="_blank"><img src="https://user-images.githubusercontent.com/56053290/218259194-0cbc46a8-6150-4eb7-8cfb-14846262a0c3.png" style="border-radius: 30px"></a> </p>
+<p> <a href="https://github.com/themonsteer" target="_blank"><img src="https://user-images.githubusercontent.com/56053290/218259194-0cbc46a8-6150-4eb7-8cfb-14846262a0c3.png" style="border-radius: 300px"></a> </p>
    
-<p>  <a href="https://www.linkedin.com/in/pedro-souza-a382b3182" target="_blank"><img src="https://icons8.com/icon/62925/linkedin-circled" ></a> </p>
+<p>  <a href="https://www.linkedin.com/in/pedro-souza-a382b3182" target="_blank"><img src="img/icone-link.png" style="border-radius: 30px"></a> </p>
 
 
 <h2>Luan</h2>
