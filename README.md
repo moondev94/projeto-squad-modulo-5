@@ -101,32 +101,32 @@ Utilizar o padrão MVC;<br>
 
 <p> <a href="https://github.com/themonsteer" target="_blank"><img src="https://user-images.githubusercontent.com/56053290/218259194-0cbc46a8-6150-4eb7-8cfb-14846262a0c3.png" style="border-radius: 300px"></a> </p>
    
-<p>  <a href="https://www.linkedin.com/in/pedro-souza-a382b3182" target="_blank"><img src="img/icone-link.png" style="border-radius: 30px"></a> </p>
+<p>  <a href="https://www.linkedin.com/in/pedro-souza-a382b3182" target="_blank"><img src="img/icone-linkedin.png" style="border-radius: 30px"></a> </p>
 
 
 <h2>Luan</h2>
 
 <p> <a href="https://github.com/luanmartins8" target="_blank"><img src="https://user-images.githubusercontent.com/56053290/218259194-0cbc46a8-6150-4eb7-8cfb-14846262a0c3.png" style="border-radius: 30px"></a> </p>
    
-<p>  <a href="https://www.linkedin.com/in/luan-martins-55b33916b/" target="_blank"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" style="border-radius: 30px"></a> </p>
+<p>  <a href="https://www.linkedin.com/in/luan-martins-55b33916b/" target="_blank"><img src="img/icone-linkedin.png" style="border-radius: 30px"></a> </p>
 
 
 <h2>Valdeilson</h2>
 
 <p> <a href="https://github.com/VALdeilSONn" target="_blank"><img src="https://user-images.githubusercontent.com/56053290/218259194-0cbc46a8-6150-4eb7-8cfb-14846262a0c3.png" style="border-radius: 30px"></a> </p>
    
-<p>  <a href="https://www.linkedin.com/in/valdeilson-souza-de-carvalho-8871b5245/" target="_blank"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" style="border-radius: 30px"></a> </p>
+<p>  <a href="https://www.linkedin.com/in/valdeilson-souza-de-carvalho-8871b5245/" target="_blank"><img src="img/icone-linkedin.png" style="border-radius: 30px"></a> </p>
 
 
 <h2>Patrick</h2>
 
 <p> <a href="https://github.com/fpdvloper" target="_blank"><img src="https://user-images.githubusercontent.com/56053290/218259194-0cbc46a8-6150-4eb7-8cfb-14846262a0c3.png" style="border-radius: 30px"></a> </p>
    
-<p>  <a href="https://www.linkedin.com/in/fpdeveloper/" target="_blank"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" style="border-radius: 30px"></a> </p>
+<p>  <a href="https://www.linkedin.com/in/fpdeveloper/" target="_blank"><img src="img/icone-linkedin.png" style="border-radius: 30px"></a> </p>
 
 
 <h2>Geovani</h2>
 
 <p> <a href="https://github.com/VALdeilSONn" target="_blank"><img src="https://user-images.githubusercontent.com/56053290/218259194-0cbc46a8-6150-4eb7-8cfb-14846262a0c3.png" style="border-radius: 30px"></a> </p>
    
-<p>  <a href="https://www.linkedin.com/in/geovanihenrique/" target="_blank"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" style="border-radius: 30px"></a> </p>
+<p>  <a href="https://www.linkedin.com/in/geovanihenrique/" target="_blank"><img src="img/icone-linkedin.png" style="border-radius: 30px"></a> </p>
