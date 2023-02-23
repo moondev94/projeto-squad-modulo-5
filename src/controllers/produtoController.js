@@ -13,6 +13,7 @@ class produtoController {
     }
     
     //GET
+
     static async listar(req, res){
         const produto = await ProdutoDAO.listar()
         // Devolve a lista de produtos
@@ -44,52 +45,29 @@ class produtoController {
             valor: req.body.valor
         }
 
-        if (!produto || !produto.id || !produto.nome || !produto.marca || !produto.modelo || !produto.descricao || !produto.valor){
-            res.status(400).send("É necessário passar todas as informações")
-            return
-        } 
         
         const result = await ProdutoDAO.inserir(produto)
 
-        if(result.erro) {
-            res.status(500).send(result)
-        }
-
-        res.status(201).send({"Mensagem": "Produto adicionado com sucesso", "Novo produto: ": produto})
+        res.status(201).send({"Mensagem": "Produto adicionado com sucesso", "Novo produto: ": result})
     }
 
 
     //PUT 
     static async atualizaProduto(req, res){
         // Busca o id na lista de produtos
-        const id = await ProdutoDAO.buscarPorID(req.params.id)
-
-        // Se o produto não for encontrado, devolve um erro
-        if (!id){
-            res.status(404).send('Item não encontrado')
-            return
-        }
-
         const produto = new Produto(req.body.id, req.body.nome, req.body.marca, req.body.modelo, req.body.descricao, req.body.valor)
-         if (!produto || !produto.id || !produto.nome || !produto.marca || !produto.modelo || !produto.descricao || !produto.valor){
-             res.status(400).send("É necessário passar todas as informações")
-            return 
+
+         if (!produto){
+             res.status(404).send("Produto não encontrado")
          }
-         
-         if(!Object.keys(produto).length) {
-            res.status(400).send('O objeto esta sem chaves')
-            return
-        }
 
         const result = await ProdutoDAO.atualizar(req.params.id, produto)
         if (result.erro) {
             res.status(500).send('Erro ao atualizar o produto')
-            return
         }
 
-        res.status(200).send({"Mensagem": "Dados atualizados", "Produto: ": produto})
+        res.status(201).send({"Mensagem": "Dados atualizados", "Produto: ": produto})
     }
-
 
     //DELETE
     static async deletarProduto(req, res){
@@ -107,7 +85,7 @@ class produtoController {
             return
         }
 
-        res.status(200).send(result)
+        res.status(204).send(result)
     }
 
     
