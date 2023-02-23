@@ -36,42 +36,28 @@ class ClienteDAO {
 
   // POST  --  Função RUN - Executa a função. No callback NÂO existe o argumento ROWS, apenas o argumento ERR, porém devolvemos os usuário
   static inserir(cliente) {
-    const query = `INSERT INTO CLIENTE (id, nome, email, endereco, cpf, telefone) VALUES (?, ?, ?, ?. ?, ?)`;
-
+    const query = 'INSERT INTO CLIENTE (id, nome, email, endereco, cpf, telefone) VALUES (?, ?, ?, ?, ?, ?)';
     return new Promise((resolve, reject) => {
-      db.run(query, [cliente.id, cliente.nome, cliente.email, cliente.endereco, cliente.cpf, cliente.telefone], (err) => {
-        if (err) {
-          reject({
-            messagem: "Erro ao inserir o cliente",
-            erro: err,
-          });
-        }
-        resolve(cliente);
-      });
+        db.run(query, [cliente.id, cliente.nome, cliente.email, cliente.endereco, cliente.cpf, cliente.telefone], (err) => {
+            if (err) {
+                reject(err);
+            }
+            resolve(cliente)
+        });
     });
-  }
+}
 
-
-  // PUT  --   Função RUN - Executa a função. No callback NÂO existe o argumento ROWS, apenas o argumento ERR. Se tudo der certo, devolve o objeto: { mensagem: "Usuário atualizado com sucesso" }
-  static atualizar(ID, cliente) {
-    const query =
-      "UPDATE CLIENTE SET  ID = ?, NOME = ?, EMAIL = ?, ENDERECO = ?, CPF = ?, TELEFONE = ?,  WHERE ID = ?";
+static atualizar(id, cliente) {
+    const query = 'UPDATE CLIENTE SET id = ?, nome = ?, email = ?, endereco = ?, cpf = ?, telefone = ? WHERE id = ?';
     return new Promise((resolve, reject) => {
-      db.run(
-        query,
-        [cliente.ID, cliente.NOME, cliente.EMAIL, cliente.ENDERECO, cliente.CPF, cliente.TELEFONE, ID],
-        (err) => {
-          if (err) {
-            reject({
-              mensagem: "Erro ao atualizar o cliente",
-              erro: err,
-            });
-          }
-          resolve({ mensagem: "Cliente atualizado com sucesso" });
-        }
-      );
+        db.run(query, [cliente.id, cliente.nome, cliente.email, cliente.endereco, cliente.cpf, cliente.telefone, id], (err) => {
+            if (err) {
+                reject(err);
+            }
+            resolve({mensagem:'Informações do cliente atualizadas'});
+        });
     });
-  }
+}
 
 
   // DELETE  --  Função RUN - Executa a função. No callback NÂO existe o argumento ROWS e nem ROW. Existe apenas o argumento ERR. Se tudo der certo, devolve o objeto: { mensagem: "Usuário deletado com sucesso", email: email }
