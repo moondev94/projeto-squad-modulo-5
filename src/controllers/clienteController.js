@@ -14,15 +14,14 @@ class clienteController {
 
     
     //GET
-
     static async listar(req, res){
-        const clientes = await ClienteDAO.listar()
+        const cliente = await ClienteDAO.listar()
         // Devolve a lista de Clientes
-        res.status(200).send(clientes)
+        res.status(200).send(cliente)
     }
 
     static async buscarPorID(req, res){
-        // Busca o email na lista de Clientes
+        // Busca o id na lista de Clientes
         const cliente = await ClienteDAO.buscarPorID(req.params.id)
         
         // Se o Cliente não for encontrado, devolve um erro
@@ -35,63 +34,35 @@ class clienteController {
 
 
     //POST
-
     static async inserir(req, res){
         const cliente = {
-            id: req.body.id, 
-            nome: req.body.nome, 
-            email: req.body.email, 
-            endereco: req.body.endereco, 
-            cpf: req.body.cpf, 
+            id: req.body.id,
+            nome: req.body.nome,
+            email: req.body.email,
+            endereco: req.body.endereco,
+            cpf: req.body.cpf,
             telefone: req.body.telefone
-        }
-        if (!cliente || !cliente.id || !cliente.email || !cliente.endereco || !cliente.cpf || cliente.telefone) {
-            res.status(400).send("É necessário passar as informações")
-            return
         }
 
         const result = await ClienteDAO.inserir(cliente)
 
-        if(result.erro) {
-            res.status(500).send(result)
-        }
-        
-        res.status(201).send({"Mensagem": "Cliente adicionado com sucesso", "Novo cliente: ": cliente})
+        res.status(201).send({"Mensagem": "Informações de cliente incluídas com sucesso!", "Novo cliente: ": result})    
     }
 
-
-    //PUT
-
-    static async atualizaCliente(req, res){
-        // Busca o email na lista de Clientes
-        const id = await ClienteDAO.buscarPorID(req.params.id)
-
-        // Se o Cliente não for encontrado, devolve um erro
-        if (!id){
-            res.status(404).send('Cliente não encontrado')
-            return
-        }
-
+    // PUT
+    static async atualizaCliente(req, res) {
         const cliente = new Cliente(req.body.id, req.body.nome, req.body.email, req.body.endereco, req.body.cpf, req.body.telefone)
 
-        if (!cliente || !cliente.id || !cliente.email || !cliente.endereco || !cliente.cpf || cliente.telefone) {
-            res.status(400).send("É necessário passar as informações")
-            return
+        if (!cliente) {
+            res.status(404).send('Cliente não encontrado')
         }
-
-        if(!Object.keys(cliente).lenght) {
-            res.status(400).send('O objeto está sem chaves')
-            return
-        }
-
         const result = await ClienteDAO.atualizar(req.params.id, cliente)
+        if(result.erro){
+            res.status(500).send('Erro ao atualizar as informações do cliente')
+          }
 
-        if (result.erro) {
-            res.status(500).send('Erro ao atualizar o cliente')
-            return
-        }
 
-        res.status(200).send({"Mensagem": "Dados atualizados", "Cliente: ": cliente})
+        res.status(201).send({"Mensagem": "Informações de cliente atualizadas!", "Novo cliente: ": cliente})
     }
    
 
@@ -113,7 +84,7 @@ class clienteController {
             return
         } 
 
-        res.status(200).send(result)
+        res.status(204).send(result)
     }
 
     
