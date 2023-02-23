@@ -53,13 +53,13 @@ class ClienteDAO {
 
 
   // PUT  --   Função RUN - Executa a função. No callback NÂO existe o argumento ROWS, apenas o argumento ERR. Se tudo der certo, devolve o objeto: { mensagem: "Usuário atualizado com sucesso" }
-  static atualizar(id, cliente) {
+  static atualizar(ID, cliente) {
     const query =
-      "UPDATE CLIENTE SET  id = ?, nome = ?, email = ?, endereco = ?, cpf = ?, telefone = ?,  WHERE id = ?";
+      "UPDATE CLIENTE SET  ID = ?, NOME = ?, EMAIL = ?, ENDERECO = ?, CPF = ?, TELEFONE = ?,  WHERE ID = ?";
     return new Promise((resolve, reject) => {
       db.run(
         query,
-        [cliente.id, cliente.nome, cliente.email, cliente.endereco, cliente.cpf, cliente.telefone, id],
+        [cliente.ID, cliente.NOME, cliente.EMAIL, cliente.ENDERECO, cliente.CPF, cliente.TELEFONE, ID],
         (err) => {
           if (err) {
             reject({
