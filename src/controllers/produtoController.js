@@ -1,6 +1,5 @@
 // Importa o bd.js para poder usar o banco de dados simulado
-const { bdProdutos } = require("../infra/bd.js")
-
+const ProdutoDAO = require("../DAO/ProdutoDAO.js")
 const Produto = require('../models/Produto.js')
 
 class produtoController {
@@ -13,71 +12,107 @@ class produtoController {
         app.delete('/produto/id/:id', produtoController.deletarProduto)
     }
     
-
-    static listar(req, res){
-        const produtos = bdProdutos
+    //GET
+    static async listar(req, res){
+        const produto = await ProdutoDAO.listar()
         // Devolve a lista de produtos
-        res.send(produtos)
+        res.status(200).send(produto)
     }
 
+    static async buscarPorID(req, res){
+        //Busca o id na lista de produtos
+        const produto = await ProdutoDAO.buscarPorID(req.params.id)
 
-    static inserir(req, res){
-        const produto = new Produto(req.body.id, req.body.nome, req.body.marca, req.body.modelo, req.body.descricao, req.body.valor)
-        bdProdutos.push(produto)
-        res.send(bdProdutos)
-        // Console log do corpo da requisição
-        console.log(req.body)        
-    }
-
-
-    static buscarPorID(req, res){
-        // Busca o id na lista de produtos
-        const produto = bdProdutos.find(produto => produto.id === req.params.id)
-        console.log(produto)
-        // Se o produto não for encontrado, devolve um erro
+        //Se o produto não for encontrado, devolve um erro
         if(!produto){
-            res.status(404).send('Item não encontrado')
+            res.status(404).send('Produto não encontrado')
         }
-        // Se o produto for encontrado, devolve o produto
-        res.send(produto)
+        //Produto encontrado
+        res.status(200).send(produto)
+
     }
 
 
-    static deletarProduto(req, res){
+    //POST
+    static async inserir(req, res){
+        const produto = {
+            id: req.body.id, 
+            nome: req.body.nome,
+            marca: req.body.marca,
+            modelo: req.body.modelo,
+            descricao: req.body.descricao,
+            valor: req.body.valor
+        }
+
+        if (!produto || !produto.id || !produto.nome || !produto.marca || !produto.modelo || !produto.descricao || !produto.valor){
+            res.status(400).send("É necessário passar todas as informações")
+            return
+        } 
+        
+        const result = await ProdutoDAO.inserir(produto)
+
+        if(result.erro) {
+            res.status(500).send(result)
+        }
+
+        res.status(201).send({"Mensagem": "Produto adicionado com sucesso", "Novo produto: ": produto})
+    }
+
+
+    //PUT 
+    static async atualizaProduto(req, res){
         // Busca o id na lista de produtos
-        const produto = bdProdutos.find(produto => produto.id === req.params.id)
+        const id = await ProdutoDAO.buscarPorID(req.params.id)
+
         // Se o produto não for encontrado, devolve um erro
-        if(!produto){
+        if (!id){
             res.status(404).send('Item não encontrado')
-        }
-        // Se o Produto for encontrado, deleta o Produto
-        const index = bdProdutos.indexOf(produto)
-        bdProdutos.splice(index, 1)
-        // Devolve o produto deletado
-        res.status(200).send({"Mensagem: ": `O produto ${produto.id} foi deletado`} )
-    }
-
-    static atualizaProduto(req, res){
-        // Busca o email na lista de produtos
-        const produto = bdProdutos.find(produto => produto.id === req.params.id)
-
-        // Se o produto não for encontrado, devolve um erro
-        if (!produto){
-            res.send('Item não encontrado')
             return
         }
 
-        // Produto atualizado
-        produto.id = req.body.id
-        produto.nome = req.body.nome
-        produto.marca = req.body.marca
-        produto.modelo = req.body.modelo
-        produto.descricao = req.body.descricao
-        produto.valor = req.body.valor
+        const produto = new Produto(req.body.id, req.body.nome, req.body.marca, req.body.modelo, req.body.descricao, req.body.valor)
+         if (!produto || !produto.id || !produto.nome || !produto.marca || !produto.modelo || !produto.descricao || !produto.valor){
+             res.status(400).send("É necessário passar todas as informações")
+            return 
+         }
+         
+         if(!Object.keys(produto).length) {
+            res.status(400).send('O objeto esta sem chaves')
+            return
+        }
 
-        res.send(bdProdutos)
+        const result = await ProdutoDAO.atualizar(req.params.id, produto)
+        if (result.erro) {
+            res.status(500).send('Erro ao atualizar o produto')
+            return
+        }
 
+        res.status(200).send({"Mensagem": "Dados atualizados", "Produto: ": produto})
     }
+
+
+    //DELETE
+    static async deletarProduto(req, res){
+
+        const produto = await ProdutoDAO.buscarPorID(req.params.id)
+
+        if(!produto) {
+            res.status(404).send({'Mensagem': 'Produto não encontrado'})
+        }
+
+        const result = await ProdutoDAO.deletar(req.params.id)
+
+        if (result.erro) {
+            res.status(400).send({'Mensagem': 'Produto não deletado'})
+            return
+        }
+
+        res.status(200).send(result)
+    }
+
+    
+
+
 }
 
 module.exports = produtoController
