@@ -1,10 +1,12 @@
-class Pedido{
-    constructor(cliente, endereco, status, pagamento){
-        this.cliente = cliente
+class Entrega {
+    constructor(id, endereco, cliente, id_produto, id_cliente) {
+        this.id = id
         this.endereco = endereco
-        this.status = status
-        this.pagamento = pagamento
+        this.cliente = cliente
+        this.id_produto = id_produto
+        this.id_cliente = id_cliente
     }
 }
 
-module.exports = Pedido
+
+module.exports = Entrega
