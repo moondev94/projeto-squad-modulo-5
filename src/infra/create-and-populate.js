@@ -5,16 +5,16 @@ const db = new sqlite3.Database('./database.db');
 // CRIAÇÃO DO BANCO PRODUTO
 const PRODUTO_SCHEMA = `
 CREATE TABLE IF NOT EXISTS "PRODUTO" (
-    "ID" INTEGER PRIMARY KEY AUTOINCREMENT,
-    "NOME" varchar(64),
-    "MARCA" varchar(64),
-    "MODELO" varchar(64),
-    "DESCRICAO" varchar(100),
-    "VALOR" varchar(64)
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "nome" varchar(64),
+    "marca" varchar(64),
+    "modelo" varchar(64),
+    "descricao" varchar(100),
+    "valor" varchar(64)
 
 );`;
 const ADD_PRODUTO_DATA = `
-INSERT INTO PRODUTO (ID, NOME, MARCA, MODELO, DESCRICAO, VALOR) VALUES
+INSERT INTO PRODUTO (id, nome, marca, modelo, descricao, valor) VALUES
 (1, 'regata', 'addidas', 'esportivo masculino', 'Regata masculina dry-fit com detalhes reflexivos', '49.99'),
 (2, 'regata', 'addidas', 'esportivo feminino', 'Regata feminina dry-fit com detalhes reflexivos', '57.26'),
 (3, 'bermuda', 'addidas', 'esportivo masculino', 'Bermuda masculina dry-fit', '84.59'),
@@ -37,16 +37,16 @@ function populaTabelaProduto() {
 // CRIAÇÃO DO BANCO CLIENTE
 const CLIENTE_SCHEMA = ` 
 CREATE TABLE IF NOT EXISTS "CLIENTE" (
-    "ID" INTEGER PRIMARY KEY AUTOINCREMENT,
-    "NOME" varchar(64),
-    "EMAIL" varchar(64),
-    "ENDERECO" varchar(100),
-    "CPF" int(11),
-    "TELEFONE" int(09)
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "nome" varchar(64),
+    "email" varchar(64),
+    "endereco" varchar(100),
+    "cpf" int(11),
+    "telefone" int(09)
 );`;
 
 const ADD_CLIENTE_DATA = `
-INSERT INTO CLIENTE (ID, NOME, EMAIL, ENDERECO, CPF, TELEFONE) VALUES
+INSERT INTO CLIENTE (id, nome, email, endereco, cpf, telefone) VALUES
 (1, 'Marcia Lopes', 'marcia.lopes@email.com', 'Rua da Quitanda, 12', '11111111111', '999999999'),
 (2, 'Julian da Silva', 'julian.silva@email.com', 'Avenida Rio Branco, 29', '22222222222', '888888888'),
 (3, 'Dom Pedro', 'dom.pedro@email.com', 'Rua Rainha Elizabeth, 56', '33333333333', '777777777')
@@ -66,17 +66,17 @@ function populaTabelaCliente() {
 //CRIAÇÃO DO BANCO DE ENTREGAS
 const ENTREGA_SCHEMA = `
 CREATE TABLE IF NOT EXISTS "ENTREGA" (
-    "ID" INTEGER PRIMARY KEY AUTOINCREMENT,
-    "ENDERECO" varchar(100),
-    "CLIENTE" varchar(64),
-    "ID_PRODUTO" INTEGER, 
-    "ID_CLIENTE" INTEGER,
-    FOREIGN KEY(ID_PRODUTO) REFERENCES PRODUTO(ID), 
-    FOREIGN KEY(ID_CLIENTE) REFERENCES CLIENTE(ID)
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "endereco" varchar(100),
+    "cliente" varchar(64),
+    "id_produto" INTEGER, 
+    "id_cliente" INTEGER,
+    FOREIGN KEY(id_produto) REFERENCES PRODUTO(id), 
+    FOREIGN KEY(id_cliente) REFERENCES CLIENTE(id)
 );`;
 
 const ADD_ENTREGA_DATA = `
-INSERT INTO ENTREGA (ID, ENDERECO, CLIENTE, ID_PRODUTO, ID_CLIENTE) VALUES
+INSERT INTO ENTREGA (id, endereco, cliente, id_produto, id_cliente) VALUES
 (1, 'Avenida Rio Branco, 29', 'Julian da Silva', 1, 2),
 (2, 'Rua da Quitanda, 12', 'Marcia Lopes', 2, 1),
 (3, 'Rua Rainha Elizabeth, 56', 'Dom Pedro', 3, 3)
