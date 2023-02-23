@@ -127,6 +127,6 @@ Utilizar o padrão MVC;<br>
 
 <h2>Geovani:</h2>
 
-<p> <a href="https://github.com/VALdeilSONn" target="_blank"><img src="https://user-images.githubusercontent.com/56053290/218259194-0cbc46a8-6150-4eb7-8cfb-14846262a0c3.png" style="border-radius: 30px"></a> </p>
+<p> <a href="https://github.com/Geovani-Henrique" target="_blank"><img src="https://user-images.githubusercontent.com/56053290/218259194-0cbc46a8-6150-4eb7-8cfb-14846262a0c3.png" style="border-radius: 30px"></a> </p>
    
 <p>  <a href="https://www.linkedin.com/in/geovanihenrique/" target="_blank"><img src="img/icone-linkedin.png" style="border-radius: 30px"></a> </p>
